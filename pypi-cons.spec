@@ -4,7 +4,7 @@
 #
 Name     : pypi-cons
 Version  : 0.4.5
-Release  : 7
+Release  : 8
 URL      : https://files.pythonhosted.org/packages/1e/b1/263faca4ab3dab8859f0d725f2b64e3a0182dbf9a8ae156209d7a2b4b9de/cons-0.4.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/1e/b1/263faca4ab3dab8859f0d725f2b64e3a0182dbf9a8ae156209d7a2b4b9de/cons-0.4.5.tar.gz
 Summary  : An implementation of Lisp/Scheme-like cons in Python.
