@@ -4,7 +4,7 @@
 #
 Name     : pypi-cons
 Version  : 0.4.5
-Release  : 10
+Release  : 11
 URL      : https://files.pythonhosted.org/packages/1e/b1/263faca4ab3dab8859f0d725f2b64e3a0182dbf9a8ae156209d7a2b4b9de/cons-0.4.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/1e/b1/263faca4ab3dab8859f0d725f2b64e3a0182dbf9a8ae156209d7a2b4b9de/cons-0.4.5.tar.gz
 Summary  : An implementation of Lisp/Scheme-like cons in Python.
@@ -15,6 +15,9 @@ Requires: pypi-cons-python = %{version}-%{release}
 Requires: pypi-cons-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(logical_unification)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # Python `cons`
@@ -63,15 +66,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656367139
+export SOURCE_DATE_EPOCH=1672264735
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -88,7 +91,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-cons
-cp %{_builddir}/cons-0.4.5/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-cons/f45ee1c765646813b442ca58de72e20a64a7ddba
+cp %{_builddir}/cons-%{version}/LICENSE.txt %{buildroot}/usr/share/package-licenses/pypi-cons/f45ee1c765646813b442ca58de72e20a64a7ddba || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
