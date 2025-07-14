@@ -1,5 +1,5 @@
 PKG_NAME := pypi-cons
-URL = https://files.pythonhosted.org/packages/1c/90/23f2b21206c4dc62edc3ee9c051fe06ef92b9213141498505a3e19b36c09/cons-0.4.6.tar.gz
+URL = https://files.pythonhosted.org/packages/ae/20/0eca1dcdbac64a570e60df66119847f94cdd513178d9c222c15101ca1022/cons-0.4.7.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
